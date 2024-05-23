@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
-import {RouterOutlet} from "@angular/router";
-import {CommonModule} from "@angular/common";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {LandingComponent} from "./landing.component";
+import { HomeComponent } from './home/home.component';
+import {LandingRoutingModule} from "./landing-routing.module";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
-    LandingComponent
+    LandingComponent,
+    HomeComponent,
   ],
   imports: [
-    BrowserModule,
     CommonModule,
-    RouterOutlet,
+    ReactiveFormsModule,
+    FormsModule,
+    LandingRoutingModule,
+    NgOptimizedImage,
   ],
 })
 export class LandingModule { }
