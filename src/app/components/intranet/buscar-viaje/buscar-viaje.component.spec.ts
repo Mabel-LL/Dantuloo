@@ -15,7 +15,7 @@ describe('BuscarViajeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('debe crear', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -8,13 +8,13 @@ describe('AppComponent', () => {
     declarations: [AppComponent]
   }));
 
-  it('should create the app', () => {
+  it('debería crear la aplicación', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Dantuloo'`, () => {
+  it(`deberia de tener como titulo 'Dantuloo'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('Dantuloo');

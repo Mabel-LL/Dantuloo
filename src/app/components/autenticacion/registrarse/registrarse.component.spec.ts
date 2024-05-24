@@ -20,11 +20,11 @@ describe('RegistrarseComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('debe crear', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should validate nombre', () => {
+  it('debe validar el nombre', () => {
     const nombreControl = component.form.controls['nombre'];
     expect(nombreControl.valid).toBeFalsy();
 
@@ -41,7 +41,7 @@ describe('RegistrarseComponent', () => {
     expect(nombreControl.valid).toBeFalsy();
   });
 
-  it('should validate apellido', () => {
+  it('debe validar el apellido', () => {
     const apellidoControl = component.form.controls['apellido'];
     expect(apellidoControl.valid).toBeFalsy();
 
@@ -56,7 +56,7 @@ describe('RegistrarseComponent', () => {
   });
 
 
-  it('should validate correo electronico', () => {
+  it('debe validar el correo electronico', () => {
     const correoControl = component.form.controls['correo'];
 
     correoControl.setValue('john.doe@example.com');
@@ -68,7 +68,7 @@ describe('RegistrarseComponent', () => {
 
 
 
-  it('should validate contraseña', () => {
+  it('debe validar la contraseña', () => {
     const contraseñaControl = component.form.controls['contraseña'];
     expect(contraseñaControl.valid).toBeFalsy();
 
@@ -85,7 +85,7 @@ describe('RegistrarseComponent', () => {
     expect(contraseñaControl.valid).toBeFalsy();
   });
 
-  it('should validate confirmar contraseña', () => {
+  it('debe validar el confirmar contraseña', () => {
     const contraseñaControl = component.form.controls['contraseña'];
     const confirmarContraseñaControl = component.form.controls['confirmarContraseña'];
 
@@ -101,7 +101,7 @@ describe('RegistrarseComponent', () => {
 
 
 
-  it('should validate DNI', () => {
+  it('debe validar el DNI', () => {
     const dniControl = component.form.controls['dni'];
     expect(dniControl.valid).toBeFalsy();
 

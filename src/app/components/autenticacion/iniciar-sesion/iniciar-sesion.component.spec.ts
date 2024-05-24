@@ -15,7 +15,7 @@ describe('IniciarSesionComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('deberia crear', () => {
     expect(component).toBeTruthy();
   });
 });
