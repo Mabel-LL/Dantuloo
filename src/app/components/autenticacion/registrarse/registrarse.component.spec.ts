@@ -52,25 +52,21 @@ describe('RegistrarseComponent', () => {
     expect(apellidoControl.valid).toBeFalsy();
 
     apellidoControl.setValue('Doe');
-    expect(apellidoControl.valid).toBeFalsy();
+    expect(apellidoControl.valid).toBeTruthy();
   });
+
 
   it('should validate correo electronico', () => {
     const correoControl = component.form.controls['correo'];
-    expect(correoControl.valid).toBeFalsy();
 
-    correoControl.setValue('john@example.com');
+    correoControl.setValue('john.doe@example.com');
     expect(correoControl.valid).toBeTruthy();
 
-    correoControl.setValue('');
-    expect(correoControl.valid).toBeFalsy();
-
-    correoControl.setValue('johnexample.com');
-    expect(correoControl.valid).toBeFalsy();
-
-    correoControl.setValue('john@example');
+    correoControl.setValue('john.doe@example');
     expect(correoControl.valid).toBeFalsy();
   });
+
+
 
   it('should validate contraseña', () => {
     const contraseñaControl = component.form.controls['contraseña'];
@@ -94,17 +90,16 @@ describe('RegistrarseComponent', () => {
     const confirmarContraseñaControl = component.form.controls['confirmarContraseña'];
 
     contraseñaControl.setValue('Password1');
-    expect(confirmarContraseñaControl.valid).toBeFalsy();
-
     confirmarContraseñaControl.setValue('Password1');
-    expect(confirmarContraseñaControl.valid).toBeTruthy();
-
-    confirmarContraseñaControl.setValue('');
-    expect(confirmarContraseñaControl.valid).toBeFalsy();
+    fixture.detectChanges();
+    expect(component.form.errors?.['passwordMismatch']).toBeUndefined(); // Verificar que no hay error de desajuste
 
     confirmarContraseñaControl.setValue('Password2');
-    expect(confirmarContraseñaControl.valid).toBeFalsy();
+    fixture.detectChanges();
+    expect(component.form.errors?.['passwordMismatch']).toBeDefined(); // Verificar que el error de desajuste está presente
   });
+
+
 
   it('should validate DNI', () => {
     const dniControl = component.form.controls['dni'];

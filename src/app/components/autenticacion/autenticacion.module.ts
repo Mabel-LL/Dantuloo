@@ -4,8 +4,8 @@ import {IniciarSesionComponent} from "./iniciar-sesion/iniciar-sesion.component"
 import {RegistrarseComponent} from "./registrarse/registrarse.component";
 import { AutenticacionComponent} from "./autenticacion.component";
 import {RouterModule, RouterOutlet} from "@angular/router";
-import {CommonModule} from "@angular/common";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule } from "@angular/forms";
 import {AutenticacionRoutingModule} from "./autenticacion-routing.module";
 
 @NgModule({
@@ -15,7 +15,7 @@ import {AutenticacionRoutingModule} from "./autenticacion-routing.module";
     RegistrarseComponent
   ],
   imports: [
-    CommonModule,
+    RouterModule,
     RouterOutlet,
     AutenticacionRoutingModule,
     ReactiveFormsModule,

@@ -15,8 +15,8 @@ export class RegistrarseComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern(/^[A-Za-z\s]{2,}$/)]],
-      apellido: ['', [Validators.required, Validators.pattern(/^[A-Za-z\s]{2,}$/)]],
-      correo: ['', [Validators.required, Validators.email, Validators.pattern(/.+@.+\..+\.com$/)]],
+      apellido: ['', [Validators.required, Validators.pattern(/^[A-Za-z\s]{3,}$/)]],
+      correo: ['', [Validators.required, Validators.email, Validators.pattern(/.+@.+\..+/)]],
       contraseña: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[A-Z])(?=.*\d).+$/)]],
       confirmarContraseña: ['', [Validators.required]],
       dni: ['', [Validators.required, Validators.pattern(/^\d{8}$/)]],
@@ -24,7 +24,9 @@ export class RegistrarseComponent implements OnInit {
   }
 
   passwordMatchValidator(form: FormGroup) {
-    return form.controls['contraseña'].value === form.controls['confirmarContraseña'].value ? null : { mismatch: true };
+    const password = form.get('contraseña');
+    const confirmPassword = form.get('confirmarContraseña');
+    return password && confirmPassword && password.value === confirmPassword.value ? null : { 'passwordMismatch': true };
   }
 
   onSubmit() {
