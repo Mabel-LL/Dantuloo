@@ -1,129 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de Usuario</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
 <body class="bg-teal-500 flex items-center justify-center min-h-screen" style="background-color: #00A2B9;">
 <div class="flex items-center justify-center h-full">
   <div class="bg-white rounded-lg shadow-lg p-8 max-w-lg mt-16 mb-8"> <!-- Ajuste del margen superior e inferior -->
     <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Registrarme</h2>
-  <form>
-    <div class="flex flex-wrap -mx-3 mb-6">
-      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="Nombre">
-          Nombre
-        </label>
-        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="Nombre" type="text" placeholder="Nombre" required>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="Nombre">
+            Nombre
+          </label>
+          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="Nombre" type="text" formControlName="nombre" placeholder="Nombre" required>
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+          <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="Apellido">
+            Apellido
+          </label>
+          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="Apellido" type="text" formControlName="apellido" placeholder="Apellido" required>
+        </div>
       </div>
-      <div class="w-full md:w-1/2 px-3">
-        <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="Apellido">
-          Apellido
+      <div class="mb-6">
+        <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="correo">
+          Correo electrónico
         </label>
-        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="Apellido" type="text" placeholder="Apellido" required>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="correo" type="email" formControlName="correo" placeholder="ejemplo@gmail.com" required>
       </div>
-    </div>
-    <div class="mb-6">
-      <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="correo">
-        Correo electrónico
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="correo" type="email" placeholder="ejemplo@gmail.com" required>
-    </div>
-    <div class="flex flex-wrap -mx-3 mb-6">
-      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="contraseña">
-          Contraseña
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="contraseña">
+            Contraseña
+          </label>
+          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="contraseña" type="password" formControlName="contraseña" placeholder="******" required>
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+          <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="c_contraseña">
+            Confirmar Contraseña
+          </label>
+          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="c_contraseña" type="password" formControlName="confirmarContraseña" placeholder="******" required>
+        </div>
+      </div>
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="DNI">
+            DNI
+          </label>
+          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="DNI" type="text" formControlName="dni" placeholder="DNI" pattern="[0-9]{1,8}" maxlength="8" required>
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+          <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="tipo_de_perfil">
+            Tipo de perfil
+          </label>
+          <select class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="tipo_de_perfil" formControlName="tipoPerfil" required>
+            <option>Conductor</option>
+            <option>Pasajero</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="fecha_de_nacimiento">
+            Fecha de nacimiento
+          </label>
+          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="fecha_de_nacimiento" type="date" formControlName="fechaNacimiento" required>
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+          <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="sexo">
+            Sexo
+          </label>
+          <select class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="sexo" formControlName="sexo" required>
+            <option>Femenino</option>
+            <option>Masculino</option>
+          </select>
+        </div>
+      </div>
+      <div class="mb-6">
+        <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="foto_de_perfil">
+          Foto de perfil
         </label>
-        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="contraseña" type="password" placeholder="******" required>
-
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="foto_de_perfil" type="file" formControlName="fotoPerfil" accept="image/*" required>
       </div>
-      <div class="w-full md:w-1/2 px-3">
-        <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="c_contraseña">
-          Confirmar Contraseña
-        </label>
-        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="c_contraseña" type="password" placeholder="******" required>
+      <div class="flex justify-center">
+        <button class="w-48 flex justify-center text-black p-2 rounded-full tracking-wide font-semibold shadow-lg cursor-pointer transition ease-in duration-500" type="submit" style="background-color: #7CDFDD;">
+          Crear Cuenta
+        </button>
       </div>
-    </div>
-
-    <!-- DNI Field -->
-    <div class="flex flex-wrap -mx-3 mb-6">
-      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="DNI">
-          DNI
-        </label>
-        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-               id="DNI"
-               type="text"
-               placeholder="DNI"
-               pattern="[0-9]{1,8}"
-               oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 8)"
-               maxlength="8"
-               required>
+      <div class="flex justify-evenly space-x-2 w-90 mt-4"> <!-- Ajuste del margen superior -->
+        <span class="bg-black h-px flex-grow"></span>
       </div>
-
-      <!-- Profile Type Dropdown -->
-      <div class="w-full md:w-1/2 px-3">
-        <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="tipo_de_perfil">
-          Tipo de perfil
-        </label>
-        <select class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="tipo_de_perfil" required>
-          <option>Conductor</option>
-          <option>Pasajero</option>
-        </select>
+      <div class="flex justify-center mt-4"> <!-- Ajuste del margen superior -->
+        <button class="w-48 flex justify-center text-black p-2 rounded-full tracking-wide font-semibold shadow-lg cursor-pointer transition ease-in duration-500" type="button" style="background-color: #7CDFDD;">
+          Ya tengo una cuenta
+        </button>
       </div>
-    </div>
-
-    <!-- fecha -->
-    <div class="flex flex-wrap -mx-3 mb-6">
-      <!-- Birth Date Field -->
-      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="fecha_de_nacimiento">
-          Fecha de nacimiento
-        </label>
-        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="fecha_de_nacimiento" type="date" required>
-      </div>
-
-      <!-- Gender Dropdown -->
-      <div class="w-full md:w-1/2 px-3">
-        <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="sexo">
-          Sexo
-        </label>
-        <select class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="sexo" required>
-          <option>Femenino</option>
-          <option>Masculino</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- Profile Picture Upload -->
-    <div class="mb-6">
-      <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="foto_de_perfil">
-        Foto de perfil
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="foto_de_perfil" type="file" accept="image/*" required>
-    </div>
-
-    <div class="flex justify-center">
-      <button class="w-48 flex justify-center text-black p-2 rounded-full tracking-wide font-semibold shadow-lg cursor-pointer transition ease-in duration-500" type="button" style="background-color: #7CDFDD;">
-        Crear Cuenta
-      </button>
-    </div>
-
-    <div class="flex justify-evenly space-x-2 w-90 mt-4"> <!-- Ajuste del margen superior -->
-      <span class="bg-black h-px flex-grow"></span>
-    </div>
-
-    <div class="flex justify-center mt-4"> <!-- Ajuste del margen superior -->
-      <button class="w-48 flex justify-center text-black p-2 rounded-full tracking-wide font-semibold shadow-lg cursor-pointer transition ease-in duration-500" type="button" style="background-color: #7CDFDD;">
-        Ya tengo una cuenta
-      </button>
-    </div>
-
-  </form>
-</div>
+    </form>
+  </div>
 </div>
 </body>
-</html>
-

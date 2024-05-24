@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgOptimizedImage} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {HttpClientModule} from "@angular/common/http";
     NgOptimizedImage,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    MatSlideToggleModule,
     FormsModule,
     HttpClientModule,
   ],
