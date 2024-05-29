@@ -9,6 +9,8 @@ import {NgOptimizedImage} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
+import {LayoutModule} from "./components/layout/layout.module";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +24,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     MatSlideToggleModule,
     FormsModule,
     HttpClientModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
