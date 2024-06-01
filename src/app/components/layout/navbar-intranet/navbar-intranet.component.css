@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #00A2B9; /* Color de fondo del navbar */
+  padding: 20px 20px; /* Aumenta el padding vertical para más espacio arriba y abajo */
+  height: 100px; /* Aumenta la altura para acomodar íconos más grandes */
+}
+
+.logo {
+  height: 80px; /* Altura ajustada para el logo */
+  margin-left: 70px;
+
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.icon {
+  margin-left: 20px;
+  margin-right: 10px;
+  height: 70px; /* Altura ajustada para los íconos */
+}
+
+.notificacion {
+  position: relative;
+  height: 50px; /* Ajusta esto para cambiar el tamaño del logo de campana */
+
+}
+
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  width: 30%; /* Ajusta el ancho según tus necesidades */
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #7CDFDD;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  position: relative;
+}
+
+.close {
+  color: #aaa;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.notification {
+  background-color: white;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px 0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.delete-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.delete-btn:hover {
+  background-color: white;
+  color: black;
+}

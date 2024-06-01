@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {AutenticacionComponent} from "./autenticacion.component";
 import {IniciarSesionComponent} from "./iniciar-sesion/iniciar-sesion.component";
 import {RegistrarseComponent} from "./registrarse/registrarse.component";
+import {CambiarPasswordComponent} from "./cambiar-password/cambiar-password.component";
 
 const routes: Routes = [
   { path: '',
@@ -10,6 +11,7 @@ const routes: Routes = [
     children: [
       {path: 'iniciar-sesion', component: IniciarSesionComponent},
       {path: 'registrarse', component: RegistrarseComponent},
+      {path: 'contrasena', component: CambiarPasswordComponent},
     ],
   }
 ];
