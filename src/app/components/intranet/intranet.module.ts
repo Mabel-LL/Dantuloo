@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import {RouterOutlet} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import {IntranetComponent} from "./intranet.component";
