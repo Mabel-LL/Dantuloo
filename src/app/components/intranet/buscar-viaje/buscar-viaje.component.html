@@ -1,22 +1,49 @@
 <div class="background">
   <div class="overlay">
-    <div class="header">
-      <img src="/assets/logo.png" alt="Logo">
-      <div class="user-icon">
-        <img src="/assets/perfil.png" alt="Usuario">
-        <h1>Pasajero</h1>
-      </div>
-    </div>
     <h1>Selecciona tu viaje ideal</h1>
     <div class="search-container">
       <div class="inputs">
-        <input type="text" placeholder="De">
-        <input type="text" placeholder="A">
-        <input type="date">
+        <input type="text" placeholder="De" [(ngModel)]="from">
+        <input type="text" placeholder="A" [(ngModel)]="to">
+        <input type="date" [(ngModel)]="date">
       </div>
       <div class="boton">
-        <button>Buscar</button>
+        <button (click)="searchTrips()">Buscar</button>
       </div>
     </div>
+    <div *ngIf="trips.length > 0" class="trips-container">
+      <h2>Viajes encontrados</h2>
+      <div *ngFor="let trip of trips" class="blanquitos">
+        <div class="trip-card">
+          <div class="trip-content">
+            <div class="trip-route">
+              <div class="route-dot start"></div>
+              <span>{{ trip.from }}</span>
+              <div class="route-line"></div>
+              <span>{{ trip.to }}</span>
+              <div class="route-dot end"></div>
+            </div>
+            <div class="trip-details">
+              <div class="trip-conductor">
+                <img [src]="trip.image" alt="Imagen de perfil">
+                <div class="trip-info">
+                  <p>{{ trip.name }}</p>
+                  <p class="rating">★★★★★</p>
+                </div>
+              </div>
+              <div class="trip-passengers">
+                <p>{{ trip.passengers }} pasajeros</p>
+              </div>
+              <div class="trip-price">
+                <p>S/ {{ trip.price }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
   </div>
 </div>
