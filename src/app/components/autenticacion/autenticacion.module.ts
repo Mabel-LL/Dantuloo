@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import {IniciarSesionComponent} from "./iniciar-sesion/iniciar-sesion.component";
 import {RegistrarseComponent} from "./registrarse/registrarse.component";
 import { AutenticacionComponent} from "./autenticacion.component";
