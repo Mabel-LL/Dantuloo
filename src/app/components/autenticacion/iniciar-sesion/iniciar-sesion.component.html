@@ -1,3 +1,5 @@
+
+
 <!-- Componente de inicio de sesión -->
 <div class="bg-no-repeat bg-cover bg-center relative" style="background-color: #00A2B9;">
   <div class="min-h-screen sm:flex sm:flex-row mx-0 justify-center">
@@ -32,6 +34,15 @@
 
           <!-- Mensaje de error general -->
           <div *ngIf="formSubmitted && loginForm.invalid" class="error">Por favor, complete todos los campos correctamente.</div>
+
+
+          <div class="flex items-center justify-between">
+            <div class="text-sm text-center ml-11">
+              <a routerLink="/autenticacion/contrasena"  class="text-black hover:text-teal-500 ml-12" >
+                ¿Olvidaste tu contraseña?
+              </a>
+            </div>
+          </div>
 
           <!-- Botón de inicio de sesión -->
 

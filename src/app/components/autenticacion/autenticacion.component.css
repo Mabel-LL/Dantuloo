@@ -1,0 +1,17 @@
+.cabeza {
+  background: #0F2027;
+  background: -webkit-linear-gradient(to right, hsla(198, 39%, 28%, 0.603), hsla(195, 35%, 19%, 0.562), hsla(198, 44%, 11%, 0.555)), url(/assets/ini.png);
+  background: linear-gradient(to right, hsla(197, 38%, 28%, 0.605), hsla(195, 35%, 19%, 0.562), hsla(198, 44%, 11%, 0.555)), url(/assets/ini.png);
+
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+
+}
+
+
+.logo {
+  margin-block: 15px;
+  height: 110px; /* Altura ajustada para el logo */
+  margin-left: 70px;
+}
