@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registrarse',
@@ -8,31 +8,88 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class RegistrarseComponent implements OnInit {
   form!: FormGroup;
+  formSubmitted = false;
+  dniHasError: boolean = false;
+  telefonoHasError: boolean = false;
+  selectedFileName: string = '';
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      nombre: ['', [Validators.required, Validators.pattern(/^[A-Za-z\s]{2,}$/)]],
-      apellido: ['', [Validators.required, Validators.pattern(/^[A-Za-z\s]{3,}$/)]],
-      correo: ['', [Validators.required, Validators.email, Validators.pattern(/.+@.+\..+/)]],
-      contraseña: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[A-Z])(?=.*\d).+$/)]],
-      confirmarContraseña: ['', [Validators.required]],
+      nombre: ['', Validators.required],
+      correo: ['', [Validators.required, Validators.email, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]],
+      contraseña: ['', [Validators.required, Validators.minLength(8)]],
+      confirmarContraseña: ['', Validators.required],
       dni: ['', [Validators.required, Validators.pattern(/^\d{8}$/)]],
-    }, { validator: this.passwordMatchValidator });
+      telefono: ['', [Validators.required, Validators.pattern(/^\d{9}$/)]],
+      tipoDePerfil: ['', Validators.required],
+      fechaDeNacimiento: ['', Validators.required],
+      sexo: ['', Validators.required],
+      fotoDePerfil: ['', Validators.required]
+    }, { validators: this.passwordMatchValidator });
   }
+
+  enviarFormulario() {
+    console.log('Intento de envío de formulario');
+    this.formSubmitted = true; // Establecemos formSubmitted en true al enviar el formulario
+
+    if (this.form.invalid) {
+      console.log('El formulario es inválido');
+      Object.keys(this.form.controls).forEach(key => {
+        if (this.form.get(key)?.invalid) {
+          console.log(`Campo inválido: ${key}, valor: ${this.form.get(key)?.value}, errores: ${JSON.stringify(this.form.get(key)?.errors)}`);
+        }
+      });
+      return;
+    }
+
+    console.log('Formulario enviado:', this.form.value);
+    // Aquí deberías tener la lógica para enviar el formulario al servidor
+  }
+
 
   passwordMatchValidator(form: FormGroup) {
-    const password = form.get('contraseña');
-    const confirmPassword = form.get('confirmarContraseña');
-    return password && confirmPassword && password.value === confirmPassword.value ? null : { 'passwordMismatch': true };
+    const password = form.get('contraseña')?.value;
+    const confirmPassword = form.get('confirmarContraseña')?.value;
+    return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
-  onSubmit() {
-    if (this.form.valid) {
-      console.log('Form Submitted!', this.form.value);
+
+  validateDNI() {
+    const dniControl = this.form.get('dni');
+    if (dniControl) {
+      if (dniControl.value.length !== 8) {
+        this.dniHasError = true;
+        dniControl.setErrors({ length: true });
+      } else {
+        this.dniHasError = false;
+        dniControl.setErrors(null);
+      }
+    }
+  }
+
+  validateTelefono() {
+    const telefonoControl = this.form.get('telefono');
+    if (telefonoControl) {
+      if (telefonoControl.value.length !== 9) {
+        this.telefonoHasError = true;
+        telefonoControl.setErrors({ length: true });
+      } else {
+        this.telefonoHasError = false;
+        telefonoControl.setErrors(null);
+      }
+    }
+  }
+
+
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.selectedFileName = file.name;
     } else {
-      console.log('Form is not valid');
+      this.selectedFileName = '';
     }
   }
 }

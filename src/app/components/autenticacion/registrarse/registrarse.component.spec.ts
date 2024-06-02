@@ -24,39 +24,9 @@ describe('RegistrarseComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('debe validar el nombre', () => {
-    const nombreControl = component.form.controls['nombre'];
-    expect(nombreControl.valid).toBeFalsy();
-
-    nombreControl.setValue('Juan');
-    expect(nombreControl.valid).toBeTruthy();
-
-    nombreControl.setValue('Juan Pablo');
-    expect(nombreControl.valid).toBeTruthy();
-
-    nombreControl.setValue('');
-    expect(nombreControl.valid).toBeFalsy();
-
-    nombreControl.setValue('J');
-    expect(nombreControl.valid).toBeFalsy();
-  });
-
-  it('debe validar el apellido', () => {
-    const apellidoControl = component.form.controls['apellido'];
-    expect(apellidoControl.valid).toBeFalsy();
-
-    apellidoControl.setValue('Ramirez Quispe');
-    expect(apellidoControl.valid).toBeTruthy();
-
-    apellidoControl.setValue('');
-    expect(apellidoControl.valid).toBeFalsy();
-
-    apellidoControl.setValue('Ramirez');
-    expect(apellidoControl.valid).toBeTruthy();
-  });
 
 
-  it('debe validar el correo electronico', () => {
+  it('debe validar el correo electrónico', () => {
     const correoControl = component.form.controls['correo'];
 
     correoControl.setValue('juan.ramirez@hotmail.com');
@@ -65,7 +35,6 @@ describe('RegistrarseComponent', () => {
     correoControl.setValue('juan.ramirez@hotmail');
     expect(correoControl.valid).toBeFalsy();
   });
-
 
 
   it('debe validar la contraseña', () => {
@@ -80,9 +49,6 @@ describe('RegistrarseComponent', () => {
 
     contraseñaControl.setValue('con');
     expect(contraseñaControl.valid).toBeFalsy();
-
-    contraseñaControl.setValue('contraseña');
-    expect(contraseñaControl.valid).toBeFalsy();
   });
 
   it('debe validar el confirmar contraseña', () => {
@@ -91,15 +57,11 @@ describe('RegistrarseComponent', () => {
 
     contraseñaControl.setValue('Contraseña1');
     confirmarContraseñaControl.setValue('Contraseña1');
-    fixture.detectChanges();
     expect(component.form.errors?.['passwordMismatch']).toBeUndefined();
 
     confirmarContraseñaControl.setValue('Contraseña2');
-    fixture.detectChanges();
     expect(component.form.errors?.['passwordMismatch']).toBeDefined();
   });
-
-
 
   it('debe validar el DNI', () => {
     const dniControl = component.form.controls['dni'];
@@ -113,6 +75,5 @@ describe('RegistrarseComponent', () => {
 
     dniControl.setValue('1234567');
     expect(dniControl.valid).toBeFalsy();
-
   });
 });
