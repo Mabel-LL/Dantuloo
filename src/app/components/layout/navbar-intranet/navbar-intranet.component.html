@@ -1,1 +1,32 @@
-<p>navbar-intranet works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar Example</title>
+  <link rel="stylesheet" href="navbar-intranet.component.css">
+</head>
+<body>
+<div class="navbar">
+  <img src="/assets/logo.png" alt="Logo" class="logo">
+  <div class="spacer"></div>
+  <img src="/assets/perfil.png" alt="Profile" class="icon">
+  <img src="/assets/campana.png" alt="Notifications" class="icon notificacion" (click)="openModal()">
+</div>
+
+<!-- Modal de notificaciones -->
+<div *ngIf="showModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <div *ngFor="let notification of notifications" class="notification">
+      <p>{{ notification }}</p>
+    </div>
+    <button class="delete-btn" (click)="deleteNotifications()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5-4h4a1 1 0 011 1v1H9V4a1 1 0 011-1zm-7 4h14" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+</body>

@@ -4,6 +4,7 @@ import {IntranetComponent} from "./intranet.component";
 import {BuscarViajeComponent} from "./buscar-viaje/buscar-viaje.component";
 import { PublicarViajeComponent } from './publicar-viaje/publicar-viaje.component';
 import {NotificacionConductorComponent} from "./notificacion-conductor/notificacion-conductor.component";
+import {ReservarViajeComponent} from "./reservar-viaje/reservar-viaje.component";
 
 const routes: Routes = [
   { path: '',
@@ -11,6 +12,7 @@ const routes: Routes = [
     children: [
       {path: 'buscar', component: BuscarViajeComponent},
       {path: 'publicar', component: PublicarViajeComponent},
+      {path: 'reservar', component: ReservarViajeComponent},
       {path: 'notificacion-conductor', component: NotificacionConductorComponent},
     ],
   }
