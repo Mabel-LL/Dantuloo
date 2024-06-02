@@ -8,9 +8,9 @@
 .cabeza {
     background: #0F2027;
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, hsla(198, 39%, 28%, 0.603), hsla(195, 35%, 19%, 0.562), hsla(198, 44%, 11%, 0.555)), url(./img/landing.jpg);
+    background: -webkit-linear-gradient(to right, hsla(198, 39%, 28%, 0.603), hsla(195, 35%, 19%, 0.562), hsla(198, 44%, 11%, 0.555)), url(/assets/landing.jpg);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, hsla(197, 38%, 28%, 0.605), hsla(195, 35%, 19%, 0.562), hsla(198, 44%, 11%, 0.555)), url(../assets/landing.jpg);
+    background: linear-gradient(to right, hsla(197, 38%, 28%, 0.605), hsla(195, 35%, 19%, 0.562), hsla(198, 44%, 11%, 0.555)), url(/assets/landing.jpg);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background-size: cover;
     background-attachment: fixed;
@@ -166,12 +166,12 @@ p {
 }
 
 .ciudad:hover{
-     color: white; 
-     transform: scale(1.10); 
+     color: white;
+     transform: scale(1.10);
 }
 
 .ciudad:active{
-    color: white; 
+    color: white;
     transform: scale(1.03);
 }
 
@@ -246,7 +246,7 @@ p {
     background-color: #fff;
     color: #00A2B9;
     border: 3px solid #fff;
-    
+
 }
 
 .viajes-button:active {
