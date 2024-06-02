@@ -1,0 +1,47 @@
+<div class="background">
+  <div class="container">
+    <h1>{{ 'EEEE d de MMMM' }}</h1>
+
+    <div class="content">
+      <div class="form">
+        <div class="input-group">
+          <input type="text" placeholder="Origen:" [(ngModel)]="viaje.origen">
+        </div>
+
+        <div class="input-group">
+          <input type="text" placeholder="Destino:" [(ngModel)]="viaje.destino">
+        </div>
+
+        <div class="input-group">
+          <input type="text" placeholder="Hora:" [(ngModel)]="viaje.hora">
+        </div>
+
+        <div class="input-group">
+          <input type="text" placeholder="Costo:" [(ngModel)]="viaje.costo">
+        </div>
+
+        <div class="input-group">
+          <input type="number" placeholder="Cantidad de pasajeros:" [(ngModel)]="cantidadPasajeros">
+        </div>
+      </div>
+
+      <div class="driver-info">
+        <img [src]="conductor.fotoUrl" alt="Foto del conductor">
+        <div>
+          <p>Nombre: {{ conductor.nombre }}</p>
+          <p>Fecha de nacimiento: {{ conductor.fechaNacimiento | date }}</p>
+          <p>Sexo: {{ conductor.sexo }}</p>
+          <p>Correo: {{ conductor.correo }}</p>
+          <p>Placa del auto: {{ conductor.placa }}</p>
+          <p>Calificación:
+            <span *ngFor="let star of estrellas">&#9733;</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="submit-button" (click)="enviarSolicitud()">Enviar solicitud</button>
+  </div>
+
+</div>
