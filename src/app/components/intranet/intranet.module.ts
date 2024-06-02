@@ -7,12 +7,15 @@ import {IntranetRoutingModule} from "./intranet-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NotificacionConductorComponent } from './notificacion-conductor/notificacion-conductor.component';
 import {LayoutModule} from "../layout/layout.module";
+import { ReservarViajeComponent } from './reservar-viaje/reservar-viaje.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     IntranetComponent,
     BuscarViajeComponent,
     NotificacionConductorComponent,
+    ReservarViajeComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +24,7 @@ import {LayoutModule} from "../layout/layout.module";
     ReactiveFormsModule,
     FormsModule,
     LayoutModule,
+    HttpClientModule
   ],
 })
 export class IntranetModule { }
