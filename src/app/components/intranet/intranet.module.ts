@@ -8,6 +8,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NotificacionConductorComponent } from './notificacion-conductor/notificacion-conductor.component';
 import {LayoutModule} from "../layout/layout.module";
 import { ReservarViajeComponent } from './reservar-viaje/reservar-viaje.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ReservarViajeComponent } from './reservar-viaje/reservar-viaje.componen
     ReactiveFormsModule,
     FormsModule,
     LayoutModule,
+    HttpClientModule
   ],
 })
 export class IntranetModule { }

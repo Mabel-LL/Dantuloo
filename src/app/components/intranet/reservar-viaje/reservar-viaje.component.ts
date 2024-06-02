@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./reservar-viaje.component.css']
 })
 export class ReservarViajeComponent implements OnInit {
+
   viaje: any = {};
   conductor: any = {};
   cantidadPasajeros: number = 1;
