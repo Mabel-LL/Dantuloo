@@ -1,25 +1,34 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #00A2B9;
-  height: 100vh;
+html, body {
+  height: 100%;
   margin: 0;
-  padding: 100px;
+}
+
+.cabeza {
+  background: #0F2027;
+  background: -webkit-linear-gradient(to right, hsla(198, 39%, 28%, 0.603), hsla(195, 35%, 19%, 0.562), hsla(198, 44%, 11%, 0.555)), url(/assets/notificacion.png) no-repeat center center fixed;
+  background: linear-gradient(to right, hsla(197, 38%, 28%, 0.605), hsla(195, 35%, 19%, 0.562), hsla(198, 44%, 11%, 0.555)), url(/assets/notificacion.png) no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100%;
+  height: 100vh;
 }
 
 .notification-container {
   width: 100%;
   max-width: 600px;
-  background: white;
+  background-color: white;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
   margin: auto;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .notification-container h2 {
   color: #333;
   text-align: center;
-  font-weight: bold; /* Título en negrita */
+  font-weight: bold;
 }
 
 .notification {
@@ -45,17 +54,20 @@ button.accept, button.decline {
   font-size: 16px;
   cursor: pointer;
   margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button.accept {
   background-color: #4CAF50;
-  color: white;
 }
 
 button.decline {
   background-color: #f44336;
-  color: white;
 }
+
+
 
 .pagination {
   display: flex;
