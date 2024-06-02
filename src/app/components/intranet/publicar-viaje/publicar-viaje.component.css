@@ -1,0 +1,218 @@
+.contenedor {
+    background-color: #00A2B9;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+}
+
+.centrado {
+    display: flex;
+    justify-content: center;
+}
+
+.centrado-vertical {
+    height: 46px;
+    display: flex;
+    align-items: center;
+}
+
+.form-container {
+    display: flex;
+    background: white;
+    padding: 20px;
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.5);
+    width: 25%;
+    height: 510px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.step {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border: 2px solid #d32f2f;
+    color: #d32f2f;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.step.active {
+    background: #d32f2f;
+    color: #fff;
+}
+
+.line {
+    width: 40%;
+    height: 2px;
+    background: #d32f2f;
+    margin: 0 10px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 70%;
+    padding: 10px 40px 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.passenger-container {
+    display: flex;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+
+.passenger-container span {
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+.pasajeros-pagar {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.btn {
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: #999;
+}
+
+.btn:hover {
+    border-color: #666;
+}
+
+#increment {
+    color: #2196f3;
+}
+
+#increment:hover {
+    border-color: #2196f3;
+}
+
+.pagar-container {
+   
+    align-items: center;
+    
+}
+
+
+
+.pagar {
+
+    justify-content: center;
+    align-items: center;
+}
+
+.pagar input {
+    margin-left: 39px;
+    width: 70%;
+    padding: 10px 10px 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+
+
+
+
+/* dsadas */
+.datetime-container {
+    width: 70%;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.datetime-group {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.datetime-group label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.icon {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.fecha-salida {
+    text-align: start;
+}
+
+.publicar-button {
+    background-color: #00A2B9;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.publicar-button:active {
+    transform: scale(1.10);
+}
+
+
+.ciudad {
+    width: 25vw;
+    height: 510px;
+    overflow: hidden;
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.ciudad iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.ciudad img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+
+
+
+

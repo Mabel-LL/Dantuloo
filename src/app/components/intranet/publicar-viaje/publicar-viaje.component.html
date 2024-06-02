@@ -1,1 +1,124 @@
-<p>publicar-viaje works!</p>
+<section class="contenedor">
+    <div class="form-container">
+        <form (ngSubmit)="nextStep()" #tripForm="ngForm" *ngIf="currentStep === 1">
+            <h1 style="font-size: 25px;">Publicar viaje</h1>
+            <div class="steps">
+                <div class="step active">1</div>
+                <div class="line"></div>
+                <div class="step">2</div>
+            </div>
+            <div class="mb-6">
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="ubicacion" type="text" formControlName="correo" placeholder="Ingresa ubicación" [(ngModel)]="trip.location" name="location" required>
+            </div>
+            <div class="mb-6">
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="destination" type="text" formControlName="destination" placeholder="Ingresa destino" [(ngModel)]="trip.destination" name="destination" required>
+            </div>
+            <div class="pasajeros-pagar">
+                <div class="passenger-container">
+                    <div
+                        class="centrado-vertical flex appearance-none  bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                        <span>Pasajeros</span>
+                        <button id="decrement" class="btn" type="button" (click)="decreasePassengers()">&#8722;</button>
+                        <span id="passenger-count">{{ trip.passengers }}</span>
+                        <button id="increment" class="btn" type="button" (click)="increasePassengers()">&#43;</button>
+                    </div>
+                </div>
+                <div class="pagar-container centrado-vertical">
+                    <div class="">
+                        <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="ubicacion" type="number" formControlName="correo" placeholder="Precio" [(ngModel)]="trip.price" name="price"
+                            required>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex;">
+                <div class="fecha-salida w-full ">
+                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        Fecha de salida
+                    </label>
+                    <input
+                        class=" appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="fecha_salida" type="date" [(ngModel)]="trip.date" name="date" required>
+                </div>
+                <div class="fecha-salida w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        Hora de salida
+                    </label>
+                    <input
+                        class=" appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="hora_salida" type="time" [(ngModel)]="trip.time" name="time" required>
+                </div>
+            </div>
+            <div>
+                <button class="publicar-button" [disabled]="tripForm.invalid" style="margin-top: 30px;" type="submit"> Siguiente </button>
+            </div>
+        </form>
+
+<!---->
+
+
+        <form (ngSubmit)="submitForm()"  #carForm="ngForm" *ngIf="currentStep === 2">
+            <h1 style="font-size: 25px;">Identificacion del auto</h1>
+            <div class="steps">
+                <div class="step ">1</div>
+                <div class="line"></div>
+                <div class="step active">2</div>
+            </div>
+            <div class="mb-6">
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="marca" type="text" formControlName="correo" placeholder="Marca del auto" [(ngModel)]="car.brand" name="brand" required>
+            </div>
+            <div class="mb-6">
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="modelo" type="text" formControlName="correo" placeholder="Modelo del auto" [(ngModel)]="car.model" name="model"
+                    required>
+            </div>
+            <div class="pasajeros-pagar">
+                <div class="pagar-container centrado-vertical" style="margin-right: 5px;">
+                    <div class="">
+                        <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="placa" type="number" formControlName="placa" placeholder="Numero de placa"
+                            [(ngModel)]="car.plateNumber" name="plateNumber" required>
+                    </div>
+                </div>
+                <div class="pagar-container centrado-vertical" style="margin-left: 5px;">
+                    <div class="">
+                        <input
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="dni" type="text" formControlName="dni" placeholder="DNI" [(ngModel)]="car.dni" name="dni"
+                            required>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button class="publicar-button" [disabled]="carForm.invalid" style="margin-top: 30px;" type="submit"> Enviar </button>
+            </div>
+        </form>
+
+
+
+
+    </div>
+    <div>
+        <div class="box centrado">
+            <div class="ciudad" *ngIf="currentStep === 1">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31597.072916457077!2d-79.06858478524046!3d-8.138679497465363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ad3d47a075c8c1%3A0xde43bc697ca8d038!2sV%C3%ADctor%20Larco%20Herrera!5e0!3m2!1ses-419!2spe!4v1717289941499!5m2!1ses-419!2spe"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="ciudad" *ngIf="currentStep === 2">
+                <img src="./assets/dantuloo-publicar.webp" alt="">
+            </div>
+        </div>
+    </div>
+
+</section>

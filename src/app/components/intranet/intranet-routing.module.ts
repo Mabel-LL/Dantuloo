@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {IntranetComponent} from "./intranet.component";
 import {BuscarViajeComponent} from "./buscar-viaje/buscar-viaje.component";
+import { PublicarViajeComponent } from './publicar-viaje/publicar-viaje.component';
 import {NotificacionConductorComponent} from "./notificacion-conductor/notificacion-conductor.component";
 
 const routes: Routes = [
@@ -9,6 +10,7 @@ const routes: Routes = [
     component: IntranetComponent,
     children: [
       {path: 'buscar', component: BuscarViajeComponent},
+      {path: 'publicar', component: PublicarViajeComponent},
       {path: 'notificacion-conductor', component: NotificacionConductorComponent},
     ],
   }

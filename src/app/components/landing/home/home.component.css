@@ -1,16 +1,80 @@
+* {
+    margin: 0;
+    padding: auto;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+.cabeza {
+    background: #0F2027;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, hsla(198, 39%, 28%, 0.603), hsla(195, 35%, 19%, 0.562), hsla(198, 44%, 11%, 0.555)), url(./img/landing.jpg);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, hsla(197, 38%, 28%, 0.605), hsla(195, 35%, 19%, 0.562), hsla(198, 44%, 11%, 0.555)), url(../assets/landing.jpg);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+
+}
+
+.navar {
+    height: 115px;
+
+}
+
+.navar img{
+    height: 100%;
+}
+.navar-button{
+    top: -30px;
+    background-color: transparent;
+    border: 3px solid #00A2B9;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.navar-button:hover {
+    background-color: #00A2B9;
+    /* Fondo verde */
+    color: white;
+    /* Texto blanco */
+}
+
+.navar-button:active {
+    background-color: #00A2B9;
+    color: white;
+    transform: scale(1.03)
+}
+
+
 .centrado {
     display: flex;
     justify-content: center;
 }
 
-.centrado-vertical{
+.centrado-vertical {
     display: flex;
     align-items: center;
+}
+
+.final {
+    position: absolute;
+    top: 20px;
+    right: 40px;
 }
 
 .medio {
     width: 70%;
 }
+
 
 
 
@@ -25,35 +89,42 @@
 /* Seccion 1 */
 .Dantuloo {
     height: 840px;
-    
+
 }
-.row{
+
+.row {
     display: flex;
+    justify-content: center;
+    text-align: center;
 }
+
 .box {
     padding: 20px;
     margin: 10px;
-    flex: 1;
-   
 
 }
+
 .titulo {
     margin-top: 25%;
-    font-size: 120px;
+    font-size: 110px;
 }
+
 /* Seccion 2 */
 .Dantuloo2 {
     height: 475px;
 }
-.texto{
+
+.texto {
     margin-top: 20%;
     margin-right: 60px;
 }
-span{
+
+span {
     font-size: 40px;
     margin-bottom: 10px;
 }
-p{
+
+p {
     font-size: 17px;
 }
 
@@ -62,39 +133,136 @@ p{
     text-align: center;
     height: 300px;
 }
-.texto2{
+
+.texto2 {
     padding-top: 15px;
     width: 100%;
     text-align: center;
 }
-.texto2 button{
+
+.texto2 button {
     margin-top: 10px;
     margin-bottom: 30px;
 }
-.titulo2{
+
+.titulo2 {
     padding-block: 15px;
     font-size: 40px;
     font-weight: bold;
 }
-.titulo3{
+
+.titulo3 {
     font-size: 30px;
 }
-.ciudad{ 
-    width: 18vw; 
-    height: 250px; 
+
+.ciudad {
+    width: 18vw;
+    height: 210px;
     overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
+.ciudad:hover{
+     color: white; 
+     transform: scale(1.10); 
+}
+
+.ciudad:active{
+    color: white; 
+    transform: scale(1.03);
+}
+
 .ciudad img {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
 }
-.texto-imagen{
+
+.texto-imagen {
     top: 50%;
     left: 50%;
-    transform: translate(0, -330%);
+    transform: translate(0, -350%);
     color: white;
     font-size: 2em;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+.button-contenedor{
+    margin-top: 50px;
+}
+
+.styled-button{
+	padding: 0.8em 1.8em;
+	border-radius: 8px;
+	background-color: transparent;
+	color:#fff;
+	border:3px solid #00A2B9;
+	font-size: 16px;
+	cursor: pointer;
+	z-index: 1;
+	transition: 0.3s;
+	overflow:hidden ;
+	position: relative;
+}
+.styled-button:before{
+	content:'';
+	width: 0;
+	height: 400%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transition: 0.5s ease;
+	transform: translate(-50%,-50%) rotate(45deg);
+	display: block;
+	z-index: -1;
+	background-color: #00A2B9;
+}
+.styled-button:hover::before{
+	width: 105%;
+}
+.styled-button:hover{
+	color:#fff;
+}
+
+.viajes-button{
+    background-color: transparent;
+    border: 2px solid #000;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.viajes-button:hover {
+    background-color: #fff;
+    color: #00A2B9;
+    border: 3px solid #fff;
+    
+}
+
+.viajes-button:active {
+    background-color: #00A2B9;
+    color: white;
+    transform: scale(1.03)
+}
+
+
+
+
+
+
+
+
+
+
+
+

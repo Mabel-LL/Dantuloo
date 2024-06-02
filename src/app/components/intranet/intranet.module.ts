@@ -8,12 +8,14 @@ import {IntranetRoutingModule} from "./intranet-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NotificacionConductorComponent } from './notificacion-conductor/notificacion-conductor.component';
 import {LayoutModule} from "../layout/layout.module";
+import { PublicarViajeComponent } from './publicar-viaje/publicar-viaje.component';
 
 @NgModule({
   declarations: [
     IntranetComponent,
     BuscarViajeComponent,
     NotificacionConductorComponent,
+    PublicarViajeComponent,
   ],
   imports: [
     CommonModule,

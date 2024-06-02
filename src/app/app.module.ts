@@ -10,12 +10,12 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 import {LayoutModule} from "./components/layout/layout.module";
-import { PublicarViajeComponent } from './publicar-viaje/publicar-viaje.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    PublicarViajeComponent,
+    
   ],
   imports: [
     BrowserModule,
