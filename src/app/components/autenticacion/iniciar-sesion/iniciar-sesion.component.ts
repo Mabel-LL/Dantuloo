@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {UsuarioService} from "../../../services/usuario.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -10,7 +12,7 @@ export class IniciarSesionComponent implements OnInit {
   loginForm!: FormGroup;
   formSubmitted = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -29,6 +31,24 @@ export class IniciarSesionComponent implements OnInit {
     }
 
     console.log('Formulario enviado:', this.loginForm.value);
-    // Aquí deberías tener la lógica para enviar el formulario al servidor
+
+    const user = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password,
+    };
+    console.log(user);
+
+    // Llamar al método de inicio de sesión en el servicio
+    this.usuarioService.login(user).subscribe(
+      (response) => {
+        console.log(response);
+        localStorage.setItem('token', response.token);
+        // Autenticación exitosa, redirigir al usuario
+        this.router.navigate(['/intranet/buscar']);
+      },
+      (error) => {
+        console.error('Error en el inicio de sesión', error);
+      }
+    );
   }
 }
