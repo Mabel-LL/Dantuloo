@@ -1,3 +1,4 @@
+
 .contenedor {
     background-color: #00A2B9;
     font-family: Arial, sans-serif;
@@ -127,8 +128,6 @@ h1 {
     
 }
 
-
-
 .pagar {
 
     justify-content: center;
@@ -143,9 +142,6 @@ h1 {
     border-radius: 5px;
     font-size: 14px;
 }
-
-
-
 
 
 /* dsadas */
@@ -199,11 +195,8 @@ h1 {
     box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-.ciudad iframe {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+
+
 .ciudad img {
     width: 100%;
     height: 100%;
@@ -211,8 +204,66 @@ h1 {
 }
 
 
+.controls {
+    margin-top: 10px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    width: 240px;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+  }
 
 
-
-
-
+.map1 {
+    margin-top: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 620px;
+    height: 530px;
+    justify-content: end;
+    background-color: #fff;
+    
+}
+.map1 div{
+    display: flex;
+    justify-content: end;
+}
+.map1 button{
+    margin-right: 20px;
+    margin-top: 20px;
+    background-color: #ff0000;
+    padding: 7px 20px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.map1 p{
+    margin-top: 10px;
+    font-weight: bolder;
+    font-size: 10px;
+}
+google-map {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    width: 600px;
+    height: 400px;
+}
