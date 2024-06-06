@@ -9,17 +9,24 @@ body {
   align-items: center;
   background-color: #00A2B9; /* Color de fondo del navbar */
   padding: 20px 20px; /* Aumenta el padding vertical para más espacio arriba y abajo */
-  height: 100px; /* Aumenta la altura para acomodar íconos más grandes */
+  height: 130px; /* Aumenta la altura para acomodar íconos más grandes */
 }
 
 .logo {
-  height: 80px; /* Altura ajustada para el logo */
+  margin-block: 15px;
+  height: 110px; /* Altura ajustada para el logo */
   margin-left: 70px;
-
 }
 
 .spacer {
   flex-grow: 1;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
 }
 
 .icon {
@@ -31,6 +38,7 @@ body {
 .notificacion {
   position: relative;
   height: 50px; /* Ajusta esto para cambiar el tamaño del logo de campana */
+  top: -15px; /* Ajusta este valor según sea necesario para subir el icono */
 
 }
 

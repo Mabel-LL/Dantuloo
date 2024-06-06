@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Router} from "@angular/router";
+import {UsuarioService} from "../../../services/usuario.service";
 
 @Component({
   selector: 'app-registrarse',
@@ -13,7 +15,7 @@ export class RegistrarseComponent implements OnInit {
   telefonoHasError: boolean = false;
   selectedFileName: string = '';
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,  private router: Router, private usuarioservice: UsuarioService ) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -45,6 +47,29 @@ export class RegistrarseComponent implements OnInit {
     }
 
     console.log('Formulario enviado:', this.form.value);
+    const usuarioData = {
+      nombre: this.form.value.nombre,
+      fecha_nacimiento: this.form.value.fechaDeNacimiento,
+      telefono: this.form.value.telefono,
+      correo: this.form.value.correo,
+      contrasena: this.form.value.contraseña,
+      dni: this.form.value.dni,
+      sexo: this.form.value.sexo,
+      role: this.form.value.tipoDePerfil,
+
+    };
+
+    this.usuarioservice.registrarUsuario(usuarioData).subscribe(
+      (response) => {
+        console.log('Respuesta del servidor:', response);
+        this.router.navigate(['/autenticacion/iniciar-sesion']);
+        this.router.navigate(['/autenticacion/iniciar-sesion']);
+
+      },
+      (error) => {
+        console.error('Error al registrar el usuario', error);
+      }
+    );
     // Aquí deberías tener la lógica para enviar el formulario al servidor
   }
 
@@ -81,8 +106,6 @@ export class RegistrarseComponent implements OnInit {
       }
     }
   }
-
-
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];

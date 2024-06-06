@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {LandingComponent} from "./landing.component";
 import { HomeComponent } from './home/home.component';
