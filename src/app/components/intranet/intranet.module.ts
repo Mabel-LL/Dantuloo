@@ -10,6 +10,7 @@ import {LayoutModule} from "../layout/layout.module";
 import { PublicarViajeComponent } from './publicar-viaje/publicar-viaje.component';
 import { ReservarViajeComponent } from './reservar-viaje/reservar-viaje.component';
 import {HttpClientModule} from "@angular/common/http";
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 @NgModule({
@@ -18,7 +19,6 @@ import {HttpClientModule} from "@angular/common/http";
     BuscarViajeComponent,
     NotificacionConductorComponent,
     PublicarViajeComponent,
-
     ReservarViajeComponent,
   ],
   imports: [
@@ -26,6 +26,7 @@ import {HttpClientModule} from "@angular/common/http";
     RouterOutlet,
     IntranetRoutingModule,
     ReactiveFormsModule,
+    GoogleMapsModule,
     FormsModule,
     LayoutModule,
     HttpClientModule

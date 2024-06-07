@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./intranet.component.css']
 })
 export class IntranetComponent {
-
+  
 }

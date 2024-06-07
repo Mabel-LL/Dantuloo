@@ -8,7 +8,7 @@ import {NgOptimizedImage} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {LayoutModule} from "./components/layout/layout.module";
-
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -24,6 +24,7 @@ import {LayoutModule} from "./components/layout/layout.module";
     MatSlideToggleModule,
     FormsModule,
     HttpClientModule,
+    GoogleMapsModule,
     LayoutModule
   ],
   providers: [],
