@@ -1,10 +1,8 @@
-<section class="cabeza">
-  <section class="navar centrado">
-    <div class="medio" style="display: flex;">
-      <div>
-        <img src="/assets/logo3.png" alt="Logo" class="logo" style="cursor: pointer;" (click)="goToHome()">
-      </div>
-    </div>
-  </section>
-</section>
+<div class="navbar">
+
+  <a routerLink="/landing/home">
+    <img src="/assets/logo_negro.png" alt="Logo" class="logo" style="cursor: pointer;" (click)="goToHome()">
+  </a>
+
+</div>
 <router-outlet></router-outlet>
