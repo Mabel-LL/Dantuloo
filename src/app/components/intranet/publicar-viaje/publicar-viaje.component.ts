@@ -7,18 +7,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./publicar-viaje.component.css']
 })
 export class PublicarViajeComponent implements OnInit, AfterViewInit {
-  originCenter: google.maps.LatLngLiteral = { lat: -12.040430, lng: -77.035780 };  
-  destinationCenter: google.maps.LatLngLiteral = { lat: -12.040430, lng: -77.035780 };  
-  originZoom = 6;
-  destinationZoom = 6;
+  originCenter: google.maps.LatLngLiteral = { lat: -34.397, lng: 150.644 };
+  destinationCenter: google.maps.LatLngLiteral = { lat: -34.397, lng: 150.644 };
+  originZoom = 7;
+  destinationZoom = 7;
   originLocation: google.maps.LatLngLiteral | null = null;
   destinationLocation: google.maps.LatLngLiteral | null = null;
   formStep1!: FormGroup;
   formStep2!: FormGroup;
   currentStep: number = 1;
   formSubmitted: boolean = false;
-  public showMap1: boolean = false;
-  public showMap2: boolean = false;
 
   @ViewChild('locationInput', { static: false }) originSearchBox!: ElementRef;
   @ViewChild('destinationInput', { static: false }) destinationSearchBox!: ElementRef;
@@ -121,18 +119,32 @@ export class PublicarViajeComponent implements OnInit, AfterViewInit {
 
       geocoder.geocode({ location }, (results, status) => {
         if (status === "OK" && results && results[0]) {
-          const address = results[0].formatted_address;
+          const addressComponents = results[0].address_components;
+          let formattedAddress = results[0].formatted_address;
+          let department = '';
+
+          // Extraer el componente de la dirección correspondiente al departamento
+          addressComponents.forEach(component => {
+            if (component.types.includes('administrative_area_level_1')) {
+              department = component.long_name;
+            }
+          });
+
+          // Combinar la dirección formateada con el departamento
+          if (department) {
+            formattedAddress = `${formattedAddress}, ${department}`;
+          }
 
           if (type === 'origin') {
             this.originLocation = location;
             this.originCenter = location;
             this.originZoom = 15;
-            this.formStep1.patchValue({ location: address });
+            this.formStep1.patchValue({ location: formattedAddress });
           } else if (type === 'destination') {
             this.destinationLocation = location;
             this.destinationCenter = location;
             this.destinationZoom = 15;
-            this.formStep1.patchValue({ destination: address });
+            this.formStep1.patchValue({ destination: formattedAddress });
           }
         } else {
           console.error("Geocode was not successful for the following reason: " + status);
@@ -189,6 +201,9 @@ export class PublicarViajeComponent implements OnInit, AfterViewInit {
       passengersControl.setValue(passengersControl.value - 1);
     }
   }
+
+  public showMap1: boolean = false;
+  public showMap2: boolean = false;
 
   openMap1(): void {
     this.showMap1 = true;
