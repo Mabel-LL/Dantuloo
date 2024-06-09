@@ -1,4 +1,4 @@
-.background { /* estilo de fondo */
+.background {
   background-image: url('/assets/fondoBuscar.png');
   background-size: cover;
   background-position: center;
@@ -26,8 +26,18 @@ h1 {
   width: 70%;
 }
 
-.form{
+.form {
   width: 50%;
+}
+
+.medio-input{
+  display: flex;
+}
+
+.medio-input input{
+  padding-top: 0.75rem/* 12px */;
+  padding-bottom: 0.75rem/* 12px */;
+  padding-left: 0.75rem;
 }
 
 .driver-info {

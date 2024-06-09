@@ -27,13 +27,14 @@
     padding: 20px;
     box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.5);
     width: 25%;
-    height: 510px;
+    height: 710px;
     text-align: center;
+
 }
 
 h1 {
     margin-bottom: 20px;
-}
+}       
 
 .steps {
     display: flex;
@@ -67,17 +68,23 @@ h1 {
     margin: 0 10px;
 }
 
-.form-group {
-    position: relative;
-    margin-bottom: 15px;
+
+
+.medio-input {
+    display: flex;
 }
 
-.form-group input {
-    width: 70%;
-    padding: 10px 40px 10px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
+.medio-input div input {
+    width: 95%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 16px;
+    margin: 4px 8px 4px 0;
+}
+.medio-input div p{
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
 }
 
 .passenger-container {
@@ -123,9 +130,9 @@ h1 {
 }
 
 .pagar-container {
-   
+
     align-items: center;
-    
+
 }
 
 .pagar {
@@ -212,7 +219,7 @@ h1 {
     -moz-box-sizing: border-box;
     height: 32px;
     outline: none;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     background-color: #fff;
     font-family: Roboto;
     font-size: 15px;
@@ -220,7 +227,7 @@ h1 {
     width: 240px;
     margin-left: 12px;
     padding: 0 11px 0 13px;
-  }
+}
 
 
 .map1 {
@@ -233,13 +240,15 @@ h1 {
     height: 530px;
     justify-content: end;
     background-color: #fff;
-    
+
 }
-.map1 div{
+
+.map1 div {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
-.map1 button{
+
+.map1 button {
     margin-right: 20px;
     margin-top: 20px;
     background-color: #ff0000;
@@ -250,11 +259,13 @@ h1 {
     font-weight: bolder;
     cursor: pointer;
 }
-.map1 p{
+
+.map1 p {
     margin-top: 10px;
     font-weight: bolder;
     font-size: 10px;
 }
+
 google-map {
     position: absolute;
     top: 50%;
@@ -266,4 +277,7 @@ google-map {
     margin-top: 50px;
     width: 600px;
     height: 400px;
+}
+.hidden {
+    display: none;
 }

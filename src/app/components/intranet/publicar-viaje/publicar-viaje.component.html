@@ -8,112 +8,227 @@
                 <div class="line"></div>
                 <div class="step">2</div>
             </div>
-            <div class="mb-6">
-                <input #locationInput (click)="openMap1()"
-                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="location" type="text" placeholder="Ingresa ubicación" formControlName="location" required>
 
-            </div>
+            <!-- Salida -->
             <div class="mb-6">
-                <input #destinationInput (click)="openMap2()"
-                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="destination" type="text" formControlName="destination" placeholder="Ingresa destino" required>
-                
+                <div class=" salida-titulo w-full" style="text-align: start;">
+                    <span style="font-size: 20px; font-weight:bold;">Salida</span>
+                    <p></p>
+                    <u (click)="openMap1()"
+                        style="font-weight: bold; font-size: 12px; color: blue; font-style: italic; ">
+                        Abrir mapa
+                    </u>
+                    <div class="medio-input w-full">
+                        <div class="w-full">
+                            <p>Direccion</p>
+                            <input #locationLocationInput
+                                class=" appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="locationLocation" type="text" placeholder="Dirección" formControlName="location"
+                                required [disabled]="true">
+                        </div>
+                        <div class="w-full">
+                            <p>Ciudad</p>
+                            <input #locationCityInput
+                                class=" appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="locationCity" type="text" placeholder="Ciudad" formControlName="locationCity"
+                                required [disabled]="true">
+                        </div>
+                    </div>
+                    <div class="medio-input">
+                        <div>
+                            <p>Departamento</p>
+                            <input #locationDepartmentInput
+                                class="appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="locationDepartment" type="text" placeholder="Departamento"
+                                formControlName="locationDepartment" required [disabled]="true">
+                        </div>
+                        <div>
+                            <p>Pais</p>
+                            <input #locationCountryInput
+                                class="appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="locationCountry" type="text" placeholder="País" formControlName="locationCountry"
+                                required [disabled]="true">
+                        </div>
+                    </div>
+                    <div class="medio hidden">
+                        <input class="" id="locationLat" type="text" placeholder="Latitud" formControlName="locationLat"
+                            required [disabled]="true">
+                        <input class="" id="locationLng" type="text" placeholder="Longitud"
+                            formControlName="locationLng" required [disabled]="true">
+                    </div>
+                </div>
             </div>
+
+            <!-- Destino -->
+            <div class="mb-6">
+                <div class="salida-titulo" style="text-align: start;">
+                    <span style="font-size: 20px; font-weight:bold;">Destino</span>
+                    <p></p>
+                    <u (click)="openMap2()"
+                        style="font-weight: bold; font-size: 12px; color: blue; font-style: italic;">
+                        Abrir mapa
+                    </u>
+                    <div class="medio-input">
+                        <div>
+                            <p>Direccion</p>
+                            <input #destinationLocationInput
+                                class="appearance-none  bg-gray-200 text-gray-700 border border-gray-200 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="destinationLocation" type="text" placeholder="Dirección"
+                                formControlName="destination" required [disabled]="true">
+                        </div>
+                        <div>
+                            <p>Cuidad</p>
+                            <input #destinationCityInput
+                                class="appearance-none  bg-gray-200 text-gray-700 border border-gray-200 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="destinationCity" type="text" placeholder="Ciudad" formControlName="destinationCity"
+                                required [disabled]="true">
+                        </div>
+                    </div>
+                    <div class="medio-input">
+                        <div>
+                            <p>Departamento</p>
+                            <input #destinationDepartmentInput
+                                class="appearance-none  bg-gray-200 text-gray-700 border border-gray-200 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="destinationDepartment" type="text" placeholder="Departamento"
+                                formControlName="destinationDepartment" required [disabled]="true">
+                        </div>
+                        <div>
+                            <p>Pais</p>
+                            <input #destinationCountryInput
+                                class="appearance-none  bg-gray-200 text-gray-700 border border-gray-200 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="destinationCountry" type="text" placeholder="País"
+                                formControlName="destinationCountry" required [disabled]="true">
+                        </div>
+                    </div>
+                    <div class="medio hidden">
+                        <input class="" id="destinationLat" type="text" placeholder="Latitud"
+                            formControlName="destinationLat" required [disabled]="true">
+                        <input class="" id="destinationLng" type="text" placeholder="Longitud"
+                            formControlName="destinationLng" required [disabled]="true">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button class="publicar-button" [disabled]="formStep1.invalid" style="margin-top: 30px;" type="submit">
+                    Siguiente
+                </button>
+            </div>
+
+
+
+
+            <!-- Mapa Salida -->
+            <div *ngIf="showMap1" class="map1">
+                <div style="width: 100%;">
+                    <button (click)="closeMap1()">x</button>
+                </div>
+                <p>Seleccione el lugar de su salida</p>
+                <google-map height="400px" width="100%" [center]="locationCenter" [zoom]="locationZoom"
+                    (mapClick)="onMapClick($event, 'location')">
+                    <map-marker *ngIf="locationLocation" [position]="locationLocation"></map-marker>
+                </google-map>
+            </div>
+
+            <!-- Mapa Destino -->
+            <div *ngIf="showMap2" class="map1">
+                <div style="width: 100%;">
+                    <button (click)="closeMap2()">x</button>
+                </div>
+                <p>Seleccione el lugar de su destino</p>
+                <google-map height="400px" width="100%" [center]="destinationCenter" [zoom]="destinationZoom"
+                    (mapClick)="onMapClick($event, 'destination')">
+                    <map-marker *ngIf="destinationLocation" [position]="destinationLocation"></map-marker>
+                </google-map>
+            </div>
+        </form>
+
+        <!-- Formulario 2 -->
+        <form [formGroup]="formStep2" *ngIf="currentStep === 2" (ngSubmit)="submitForm()">
+
+            <!-- Formulario de Identificación del Auto -->
+            <h1 style="font-size: 25px;">Identificación</h1>
+            <div class="steps">
+                <div class="step">1</div>
+                <div class="line"></div>
+                <div class="step active">2</div>
+            </div>
+
+            <!-- Pasajeros y Precio -->
+            <P style="text-align: start;" class="text-xs font-bold mb-2">Numero de pasajeros</P>
             <div class="pasajeros-pagar">
                 <div class="passenger-container">
                     <div
                         class="centrado-vertical flex appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                         <span>Pasajeros</span>
                         <button id="decrement" class="btn" type="button" (click)="decreasePassengers()">&#8722;</button>
-                        <span id="passenger-count">{{ formStep1.get('passengers')?.value }}</span>
+                        <span id="passenger-count">{{ formStep2.get('passengers')?.value }}</span>
                         <button id="increment" class="btn" type="button" (click)="increasePassengers()">&#43;</button>
                     </div>
                 </div>
                 <div class="pagar-container centrado-vertical">
+                    <span style="font-weight: bold; font-size: 11px;">Precio por pasajero</span>
                     <input
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="price" type="number" formControlName="price" placeholder="Precio" required>
                 </div>
             </div>
+
+            <!-- Fecha y Hora de Salida -->
             <div class="flex">
                 <div class="fecha-salida w-full">
-                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        Fecha de salida
-                    </label>
+                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2">Fecha de salida</label>
                     <input
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="fecha_salida" type="date" formControlName="date" required>
                 </div>
                 <div class="fecha-salida w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        Hora de salida
-                    </label>
+                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2">Hora de salida</label>
                     <input
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="hora_salida" type="time" formControlName="time" required>
                 </div>
             </div>
-            <div>
-                <button class="publicar-button" [disabled]="formStep1.invalid" style="margin-top: 30px;" type="submit">
-                    Siguiente </button>
-            </div>
-            <div *ngIf="showMap1" class="map1">
-                <div style="width: 100%;">
-                    <button (click)="closeMap1()">x</button>
-                </div>
-                <p>Seleccione el lugar de su salida</p>
-                <google-map height="400px" width="100%" [center]="originCenter" [zoom]="originZoom"
-                    (mapClick)="onMapClick($event, 'origin')">
-                    <map-marker *ngIf="originLocation" [position]="originLocation"></map-marker>
-                </google-map>
-            </div>
-            <div *ngIf="showMap2" class="map1">
-                <div style="width: 100%;">
-                    <button (click)="closeMap2()">x</button>
-                </div>
-                <p>Seleccione el lugar de su salida</p>
-                <google-map *ngIf="showMap2" height="400px" width="100%" [center]="destinationCenter"
-                    [zoom]="destinationZoom" (mapClick)="onMapClick($event, 'destination')">
-                    <map-marker *ngIf="destinationLocation" [position]="destinationLocation"></map-marker>
-                </google-map>
-            </div>
-        </form>
 
-        <!-- Formulario de Identificación del Auto -->
-        <form [formGroup]="formStep2" *ngIf="currentStep === 2" (ngSubmit)="submitForm()">
-            <h1 style="font-size: 25px;">Identificación del auto</h1>
-            <div class="steps">
-                <div class="step">1</div>
-                <div class="line"></div>
-                <div class="step active">2</div>
-            </div>
-            <div class="mb-6">
+            <!-- Marca del Auto -->
+            <P style="text-align: start; " class="text-s font-bold mb-3 mt-4">Identificación del auto</P>
+            <div class="mb-3">
+                <P style="text-align: start; margin-top:7px;" class="text-xs font-bold mb-2">Marca del auto</P>
                 <input
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="brand" type="text" formControlName="brand" placeholder="Marca del auto" required>
             </div>
-            <div class="mb-6">
+
+            <!-- Modelo del Auto -->
+            <div class="mb-3">
+                <P style="text-align: start;" class="text-xs font-bold mb-2">Modelo del auto</P>
                 <input
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="model" type="text" formControlName="model" placeholder="Modelo del auto" required>
             </div>
+
+            <!-- Número de Placa -->
             <div class="pasajeros-pagar">
-                <div class="pagar-container centrado-vertical" style="margin-right: 5px;">
+
+                <div class="pagar-container " style="margin-right: 5px;">
+                    <P style="text-align: start;" class="text-xs font-bold mb-2">Placa</P>
                     <input
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="plateNumber" type="text" formControlName="plateNumber" placeholder="Número de placa"
                         required>
                 </div>
-                <div class="pagar-container centrado-vertical" style="margin-left: 5px;">
+                <div class="pagar-container " style="margin-left: 5px;">
+                    <P style="text-align: start;" class="text-xs font-bold mb-2">DNI</P>
                     <input
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="dni" type="text" formControlName="dni" placeholder="DNI" required>
                 </div>
             </div>
+
             <div>
                 <button class="publicar-button" [disabled]="formStep2.invalid" style="margin-top: 30px;" type="submit">
-                    Enviar </button>
+                    Enviar
+                </button>
             </div>
         </form>
     </div>
