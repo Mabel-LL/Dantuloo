@@ -1,13 +1,17 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {ViajeService} from "../../../services/viaje.service";
+import {ViajeUno} from "../../../models/viajeUno";
+import {ViajeDos} from "../../../models/viajeDos";
 
 @Component({
   selector: 'app-publicar-viaje',
   templateUrl: './publicar-viaje.component.html',
   styleUrls: ['./publicar-viaje.component.css']
 })
+
 export class PublicarViajeComponent implements OnInit, AfterViewInit {
-  locationCenter: google.maps.LatLngLiteral = { lat: -10.466746, lng: -75.365439 }; 
+  locationCenter: google.maps.LatLngLiteral = { lat: -10.466746, lng: -75.365439 };
   destinationCenter: google.maps.LatLngLiteral = { lat: -10.466746, lng: -75.365439 };
   locationZoom = 6;
   destinationZoom = 6;
@@ -29,7 +33,7 @@ export class PublicarViajeComponent implements OnInit, AfterViewInit {
   @ViewChild('destinationDepartmentInput', { static: false }) destinationDepartmentInput!: ElementRef;
   @ViewChild('destinationCountryInput', { static: false }) destinationCountryInput!: ElementRef;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private viajeuno: ViajeService, private viajedos: ViajeService) {}
 
   ngOnInit(): void {
     this.formStep1 = this.fb.group({
@@ -45,7 +49,7 @@ export class PublicarViajeComponent implements OnInit, AfterViewInit {
       destinationCountry: ['', Validators.required],
       destinationLat: [{ value: '', disabled: true }, Validators.required],
       destinationLng: [{ value: '', disabled: true }, Validators.required],
-     
+
     });
 
     this.formStep2 = this.fb.group({
@@ -56,7 +60,7 @@ export class PublicarViajeComponent implements OnInit, AfterViewInit {
       brand: ['', Validators.required],
       model: ['', Validators.required],
       plateNumber: ['', Validators.required],
-      dni: ['', Validators.required],
+      color: ['', Validators.required],
     });
 
     // Deshabilitar los inputs de salida y destino
@@ -70,16 +74,8 @@ export class PublicarViajeComponent implements OnInit, AfterViewInit {
   }
 
   disableLocationInputs() {
-    this.formStep1.get('location')?.disable();
-    this.formStep1.get('locationCity')?.disable();
-    this.formStep1.get('locationDepartment')?.disable();
-    this.formStep1.get('locationCountry')?.disable();
     this.formStep1.get('locationLat')?.disable();
     this.formStep1.get('locationLng')?.disable();
-    this.formStep1.get('destination')?.disable();
-    this.formStep1.get('destinationCity')?.disable();
-    this.formStep1.get('destinationDepartment')?.disable();
-    this.formStep1.get('destinationCountry')?.disable();
     this.formStep1.get('destinationLat')?.disable();
     this.formStep1.get('destinationLng')?.disable();
   }
@@ -249,39 +245,84 @@ export class PublicarViajeComponent implements OnInit, AfterViewInit {
     });
   }
 
-  nextStep(): void {
-    this.formSubmitted = true;
-    if (this.currentStep === 1 && this.formStep1.invalid) {
-      console.log('El formulario de la primera parte es inválido');
+  viajeUno(): void {
+    // Habilitar los campos antes de la validación
+    /*this.enableLocationInputs();*/
+
+    // Verificar el estado del formulario
+    if (this.formStep1.valid) {
+      const viaje: ViajeUno = {
+        departamentodestino: this.formStep1.get('destinationDepartment')?.value,
+        ciudaddestino: this.formStep1.get('destinationCity')?.value,
+        direcciondestino: this.formStep1.get('destination')?.value,
+        paisdestino: this.formStep1.get('destinationCountry')?.value,
+
+        departamentoorigen: this.formStep1.get('locationDepartment')?.value,
+        ciudadorigen: this.formStep1.get('locationCity')?.value,
+        direccionorigen: this.formStep1.get('location')?.value,
+        paisorigen: this.formStep1.get('locationCountry')?.value,
+      };
+
+      this.viajeuno.publicarViajeUno(viaje).subscribe(
+        response => {
+          console.log('Viaje publicado con éxito', response);
+          // Aquí puedes agregar la lógica para redirigir al usuario o mostrar un mensaje de éxito
+          this.currentStep = 2;
+        },
+        error => {
+          console.error('Error al publicar el viaje', error);
+          // Aquí puedes agregar la lógica para manejar el error, como mostrar un mensaje al usuario
+        }
+      );
+    } else {
+      console.error('Formulario inválido');
+      // Revisar los errores de cada control
       Object.keys(this.formStep1.controls).forEach(key => {
-        if (this.formStep1.get(key)?.invalid) {
-          console.log(`Campo inválido: ${key}, valor: ${this.formStep1.get(key)?.value}, errores: ${JSON.stringify(this.formStep1.get(key)?.errors)}`);
+        const controlErrors = this.formStep1.get(key)?.errors;
+        if (controlErrors) {
+          console.error(`Error en el campo ${key}:`, controlErrors);
         }
       });
-      return;
     }
-    this.formSubmitted = false;
-    if (this.currentStep < 2) {
-      this.currentStep++;
-    }
+
+    // Volver a deshabilitar los campos si es necesario
+    this.disableLocationInputs();
   }
 
-  submitForm(): void {
-    console.log('Intento de envío de formulario');
-    this.formSubmitted = true;
 
-    if (this.formStep2.invalid) {
-      console.log('El formulario de la segunda parte es inválido');
+  submitForm(): void {
+    if (this.formStep2.valid) {
+      const infoAuto: ViajeDos = {
+        marcaAuto: this.formStep2.get('brand')?.value,
+        modeloAuto: this.formStep2.get('model')?.value,
+        placaAuto: this.formStep2.get('plateNumber')?.value,
+        colorAuto: this.formStep2.get('color')?.value,
+
+        pasajeros: this.formStep2.get('passengers')?.value,
+        precio: this.formStep2.get('price')?.value,
+        fechaHoraSalida: this.formStep2.get('')?.value,
+      };
+
+      this.viajedos.publicarViajeDos(infoAuto).subscribe(
+        response => {
+          console.log('Informacion del auto Guardado con exito', response);
+          // Aquí puedes agregar la lógica para redirigir al usuario o mostrar un mensaje de éxito
+        },
+        error => {
+          console.error('Error al guardar la informacion del auto', error);
+          // Aquí puedes agregar la lógica para manejar el error, como mostrar un mensaje al usuario
+        }
+      );
+    } else {
+      console.error('Formulario inválido');
+      // Revisar los errores de cada control
       Object.keys(this.formStep2.controls).forEach(key => {
-        if (this.formStep2.get(key)?.invalid) {
-          console.log(`Campo inválido: ${key}, valor: ${this.formStep2.get(key)?.value}, errores: ${JSON.stringify(this.formStep2.get(key)?.errors)}`);
+        const controlErrors = this.formStep2.get(key)?.errors;
+        if (controlErrors) {
+          console.error(`Error en el campo ${key}:`, controlErrors);
         }
       });
-      return;
     }
-
-    console.log('Formulario enviado', { ...this.formStep1.value, ...this.formStep2.value });
-    // Aquí puedes manejar el envío del formulario, como llamar a un servicio o similar
   }
 
   increasePassengers(): void {

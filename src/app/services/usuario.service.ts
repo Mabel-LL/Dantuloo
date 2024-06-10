@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Usuario} from "../models/usuario";
-import {Observable} from "rxjs";
-import {Login} from "../models/login";
+import { HttpClient } from '@angular/common/http';
+import { Usuario } from '../models/usuario';
+import { Observable } from 'rxjs';
+import { Login } from '../models/login';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
+  private role: string | null = null;
 
   constructor(private http: HttpClient) {}
 
@@ -16,8 +18,20 @@ export class UsuarioService {
   }
 
   login(user: Login): Observable<any> {
-    return this.http.post(`http://localhost:8080/api/usuario/login`, user, { responseType: 'text' });
+    return this.http.post(`http://localhost:8080/api/usuario/login`, user).pipe(
+      tap((response: any) => {
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('role', response.role);
+        this.role = response.role;
+        console.log('Token guardado:', localStorage.getItem('token'));
+      })
+    );
   }
 
-
+  getRole(): string | null {
+    if (!this.role) {
+      this.role = localStorage.getItem('role');
+    }
+    return this.role;
+  }
 }
