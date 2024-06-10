@@ -1,7 +1,7 @@
 <section class="contenedor">
     <div class="form-container">
         <!-- Formulario de Publicación de Viaje -->
-        <form [formGroup]="formStep1" *ngIf="currentStep === 1" (ngSubmit)="nextStep()">
+        <form [formGroup]="formStep1" *ngIf="currentStep === 1" (ngSubmit)="viajeUno()">
             <h1 style="font-size: 25px;">Publicar viaje</h1>
             <div class="steps">
                 <div class="step active">1</div>
@@ -218,10 +218,10 @@
                         required>
                 </div>
                 <div class="pagar-container " style="margin-left: 5px;">
-                    <P style="text-align: start;" class="text-xs font-bold mb-2">DNI</P>
+                    <P style="text-align: start;" class="text-xs font-bold mb-2">Color del auto</P>
                     <input
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="dni" type="text" formControlName="dni" placeholder="DNI" required>
+                        id="color" type="text" formControlName="color" placeholder="Color del auto" required>
                 </div>
             </div>
 

@@ -43,8 +43,14 @@ export class IniciarSesionComponent implements OnInit {
       (response) => {
         console.log(response);
         localStorage.setItem('token', response.token);
-        // Autenticación exitosa, redirigir al usuario
-        this.router.navigate(['/intranet/buscar']);
+        const role = this.usuarioService.getRole();
+        if (role === 'CONDUCTOR') {
+          this.router.navigate(['/intranet/publicar']);
+        } else if (role === 'PASAJERO') {
+          this.router.navigate(['/intranet/buscar']);
+        } else {
+          this.router.navigate(['iniciar-sesion']);
+        }
       },
       (error) => {
         console.error('Error en el inicio de sesión', error);
