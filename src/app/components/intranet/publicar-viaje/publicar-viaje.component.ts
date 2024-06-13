@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {ViajeService} from "../../../services/viaje.service";
 import {ViajeUno} from "../../../models/viajeUno";
 import {ViajeDos} from "../../../models/viajeDos";
+import { parse, format } from 'date-fns';
 
 @Component({
   selector: 'app-publicar-viaje',
@@ -292,6 +293,10 @@ export class PublicarViajeComponent implements OnInit, AfterViewInit {
 
   submitForm(): void {
     if (this.formStep2.valid) {
+      const date = this.formStep2.value.date;
+      const time = this.formStep2.value.time;
+      const fechaHoraSalida = this.combineDateAndTime(date, time);
+
       const infoAuto: ViajeDos = {
         marcaAuto: this.formStep2.get('brand')?.value,
         modeloAuto: this.formStep2.get('model')?.value,
@@ -300,7 +305,7 @@ export class PublicarViajeComponent implements OnInit, AfterViewInit {
 
         pasajeros: this.formStep2.get('passengers')?.value,
         precio: this.formStep2.get('price')?.value,
-        fechaHoraSalida: this.formStep2.get('')?.value,
+        fechaHoraSalida: fechaHoraSalida
       };
 
       this.viajedos.publicarViajeDos(infoAuto).subscribe(
@@ -323,6 +328,18 @@ export class PublicarViajeComponent implements OnInit, AfterViewInit {
         }
       });
     }
+  }
+
+  private combineDateAndTime(date: string, time: string): string {
+    const [year, month, day] = date.split('-').map(Number);
+    const [hours, minutes] = time.split(':').map(Number);
+    const combinedDate = new Date(year, month - 1, day, hours, minutes);
+
+    // Ajustar la hora manualmente restando la diferencia de la zona horaria
+    const adjustedDate = new Date(combinedDate.getTime() - (combinedDate.getTimezoneOffset() * 60000));
+
+    // Convertir a cadena en formato ISO sin la parte de la zona horaria
+    return adjustedDate.toISOString().slice(0, 19); // "YYYY-MM-DDTHH:MM:SS"
   }
 
   increasePassengers(): void {

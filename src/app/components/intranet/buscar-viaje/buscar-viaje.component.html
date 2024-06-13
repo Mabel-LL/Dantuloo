@@ -3,12 +3,12 @@
     <h1>Selecciona tu viaje ideal</h1>
     <div class="search-container">
       <div class="inputs">
-        <input type="text" placeholder="De" [(ngModel)]="from">
-        <input type="text" placeholder="A" [(ngModel)]="to">
-        <input type="date" [(ngModel)]="date">
+        <input type="text" placeholder="De" [(ngModel)]="viaje.ciudadorigen">
+        <input type="text" placeholder="A" [(ngModel)]="viaje.ciudaddestino">
+        <input type="date" [(ngModel)]="viaje.fechaorigen">
       </div>
       <div class="boton">
-        <button (click)="searchTrips()">Buscar</button>
+        <button (click)="buscarViaje()">Buscar</button>
       </div>
     </div>
     <div *ngIf="trips.length > 0" class="trips-container">
@@ -18,9 +18,9 @@
           <div class="trip-content">
             <div class="trip-route">
               <div class="route-dot start"></div>
-              <span>{{ trip.from }}</span>
+              <span>{{ trip.viajeOrigen.ciudadorigen }}</span>
               <div class="route-line"></div>
-              <span>{{ trip.to }}</span>
+              <span>{{ trip.viajeDestino.ciudaddestino }}</span>
               <div class="route-dot end"></div>
             </div>
             <div class="trip-details">
@@ -32,10 +32,10 @@
                 </div>
               </div>
               <div class="trip-passengers">
-                <p>{{ trip.passengers }} pasajeros</p>
+                <p>{{ trip.totalAsientos }} pasajeros</p>
               </div>
               <div class="trip-price">
-                <p>S/ {{ trip.price }}</p>
+                <p>S/ {{ trip.costoViaje }}</p>
               </div>
             </div>
           </div>
