@@ -1,10 +1,10 @@
 export interface ViajeDos {
-  marcaAuto:String;
-  modeloAuto:String;
-  placaAuto:String;
-  colorAuto:String;
+  marcaAuto:string;
+  modeloAuto:string;
+  placaAuto:string;
+  colorAuto:string;
 
   pasajeros:number;
-  precio:Float32Array;
-  fechaHoraSalida:String;
+  precio:number;
+  fechaHoraSalida: string;
 }

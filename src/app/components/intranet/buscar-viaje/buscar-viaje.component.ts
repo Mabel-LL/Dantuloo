@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {Trip} from "../../../models/trip";
+import {BuscarViaje} from "../../../models/buscarViaje";
+import {ViajeService} from "../../../services/viaje.service";
 
 @Component({
   selector: 'app-buscar-viaje',
@@ -7,18 +8,23 @@ import {Trip} from "../../../models/trip";
   styleUrls: ['./buscar-viaje.component.css']
 })
 export class BuscarViajeComponent {
-  from: string = '';
-  to: string = '';
-  date: string = '';
-  trips: Trip[] = [];
 
-  searchTrips() {
-    // Aquí puedes hacer una llamada a un servicio para obtener los viajes
-    // Por ahora, vamos a usar datos estáticos de ejemplo
-    this.trips = [
-      { from: 'Lima', to: 'Trujillo', image: 'ruta/a/imagen.jpg', name: 'Nombre', passengers: '4', price: '50' },
-      { from: 'Lima', to: 'Trujillo', image: 'ruta/a/imagen.jpg', name: 'Nombre', passengers: '4', price: '50' },
-      { from: 'Lima', to: 'Trujillo', image: 'ruta/a/imagen.jpg', name: 'Nombre', passengers: '4', price: '50' }
-    ];
+  viaje: BuscarViaje = {
+    ciudadorigen: '',
+    ciudaddestino: '',
+    fechaorigen: ''
+  };
+
+  trips: any[] = [];
+
+  constructor(private viajeService: ViajeService) { }
+
+  buscarViaje() {
+    this.viajeService.buscarViaje(this.viaje).subscribe(response => {
+      console.log(response);
+      this.trips = response;
+    }, error => {
+      console.error(error);
+    });
   }
 }
