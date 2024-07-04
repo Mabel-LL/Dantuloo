@@ -14,11 +14,11 @@ export class UsuarioService {
   constructor(private http: HttpClient) {}
 
   registrarUsuario(usuarioData: Usuario): Observable<any> {
-    return this.http.post(`https://dantulootravels.onrender.com/api/usuario/registrar`, usuarioData, { responseType: 'text' });
+    return this.http.post(`https://dantuloo-travels.onrender.com/api/usuario/registrar`, usuarioData, { responseType: 'text' });
   }
 
   login(user: Login): Observable<any> {
-    return this.http.post(`https://dantulootravels.onrender.com/api/usuario/login`, user).pipe(
+    return this.http.post(`https://dantuloo-travels.onrender.com/api/usuario/login`, user).pipe(
       tap((response: any) => {
         localStorage.setItem('token', response.token);
         localStorage.setItem('role', response.role);
