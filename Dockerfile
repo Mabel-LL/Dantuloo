@@ -1,18 +1,23 @@
-# Stage 1: Build the Angular application
-FROM node:18-alpine as build
+# Usa una imagen base oficial de Node.js
+FROM node:18
 
-# Set the working directory
+# Establece el directorio de trabajo en /app
 WORKDIR /app
 
-# Copy the application files
+# Copia el package.json y el package-lock.json
 COPY package*.json ./
+
+# Instala las dependencias del proyecto
 RUN npm install
 
+# Copia el resto de la aplicación en el directorio de trabajo
+COPY . .
 
-# Build the Angular application
-RUN npm run build
+# Construye el proyecto Angular
+RUN npm run build --prod
 
+# Instala Netlify CLI globalmente
 RUN npm install -g netlify-cli
 
-# Set the entrypoint for the container
-ENTRYPOINT ["sh", "-c", "netlify deploy --dir=dist/dantuloo --prod --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_SITE_ID"]
+# Comando por defecto para ejecutar el despliegue
+CMD ["sh", "-c", "netlify deploy --dir=dist/dantuloo --prod --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_SITE_ID"]
