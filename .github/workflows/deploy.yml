@@ -17,7 +17,7 @@ jobs:
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Build Docker image
-        run: docker build -t my-angular-app .
+        run: docker build -t dantuloo-front .
 
       - name: Deploy to Netlify
-        run: docker run --rm -e NETLIFY_AUTH_TOKEN=${{ secrets.NETLIFY_AUTH_TOKEN }} -e NETLIFY_SITE_ID=${{ secrets.NETLIFY_SITE_ID }} my-angular-app
+        run: docker run --rm -e NETLIFY_AUTH_TOKEN=${{ secrets.NETLIFY_AUTH_TOKEN }} -e NETLIFY_SITE_ID=${{ secrets.NETLIFY_SITE_ID }} dantuloo-front
